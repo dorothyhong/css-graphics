@@ -57,12 +57,7 @@
 
   /* ----------------------- Loading and processing data ----------------------- */
 
-  // Define csv file path if it's not already defined
-  if (typeof csvFile === "undefined") {
-    var csvFile = "../../data/energy/biofuels/biofuels3.csv";
-  }
-
-  d3.csv(csvFile, (d) => ({
+  d3.csv(biofuels3, (d) => ({
     feedstock: d.Feedstock,
     region: d.Region,
     biofuelYield: +d["Biofuel Yield"],
@@ -129,8 +124,8 @@
         d3.select(this)
           .attr("opacity", 0.5);
 
-        const tooltipX = event.clientX + window.scrollX;
-        const tooltipY = event.clientY + window.scrollY;
+        const tooltipX = event.clientX;
+        const tooltipY = event.clientY;
 
         tooltip.html(`
           <div class="tooltip-title">${d.region}</div>
